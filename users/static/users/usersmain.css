@@ -1,0 +1,129 @@
+body{
+	margin: 5px;
+	padding: 5px;
+	background-color: #f1f1f1;
+	height: 100%;
+	width: 100%;
+	overflow-x: hidden;
+}
+
+nav.bg-dark{
+    background-color: #4e598c !important;
+}
+
+p{
+	color: white;
+}
+
+ul>li{
+	color: red;
+}
+
+.register-container{
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    width: 100%;
+}
+
+div.row{
+	background-color: red;
+	width: 40%;
+}
+
+.register-form-2{
+    padding: 5%;
+    background: #4e598c;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.register-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+
+.register-form-2 h4{
+    text-align: center;
+    color: #fff;
+}
+
+.register-container form{
+    padding: 10%;
+    width: 100%;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+}
+.register-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+.register-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+
+
+.login-container{
+    display: flex;
+    justify-content: space-around; 
+    align-items: center;
+    width: 100%;
+}
+
+div.row{
+	background-color: red;
+	width: 40%;
+}
+
+.login-form-2{
+    padding: 5%;
+    background: #4e598c;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 9px 26px 0 rgba(0, 0, 0, 0.19);
+}
+
+.login-form-2 h3{
+    text-align: center;
+    color: #fff;
+}
+
+.login-container form{
+    padding: 10%;
+    width: 100%;
+}
+
+.btnSubmit
+{
+    width: 50%;
+    border-radius: 1rem;
+    padding: 1.5%;
+    border: none;
+    cursor: pointer;
+}
+
+}
+.login-form-2 .btnSubmit{
+    font-weight: 600;
+    color: #0062cc;
+    background-color: #fff;
+}
+.login-form-2 .ForgetPwd{
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+div.form-group > a:hover{
+	color: red;
+}

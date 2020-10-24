@@ -1,0 +1,337 @@
+body{
+	overflow-x: hidden;
+}
+nav.bg-dark{
+	background-color: #4e598c !important;
+}
+
+nav .navbar-nav li a{
+  color: white !important;
+}
+
+nav .navbar-nav li a:hover{
+  color: red;
+  }
+
+#items{
+	display:flex; 
+	flex-direction: row; 
+	justify-content: space-around; 
+	background-color: red; 
+	height: 20px; 
+	color: white;
+	padding: 1px 1px 1px 1px;
+	align-content: center; 
+}
+
+nav .navbar-nav a{
+  color: white !important;
+  }
+
+nav .navbar-nav a:hover{
+  color: red !important;
+  }
+
+div.box{
+	position: relative;
+	display: flex;
+	width: 100%;
+	height: 450px;
+  	text-align: center;
+  	color: white;
+}
+
+div.OverlayText{
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	transform: translate(-50%, -50%);
+}
+
+div.search-section {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: #4e598c;
+	justify-content: space-around;
+	padding-bottom: 15px;
+}
+
+div.search-section > div > form{
+	display: flex;
+	padding-top: 15px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	flex-direction: row;
+	width: 100%;
+	transform: translateX(20%);
+}
+
+#footer_row1{
+	background-color: rgba(0,0,0,0.9);
+	margin-top: 20px;
+}
+#footer_row1 *{
+	color: white;
+	list-style: none;
+}
+
+#footer_row1 .col{
+	padding: 10px;
+	margin: 0px;
+} 
+
+#footer_row1 .col .footer_span{
+	padding-left: 43px;
+}
+
+#footer_row1 .col ul li a:hover{
+	color: red;
+}
+
+hr{
+    height: 1px;
+    background-color: #ccc;
+    border: none;
+    width: 80%;
+}
+
+#footer_row2{
+	position: relative;
+	margin: 0px;
+	padding: 0px;
+	height: 60px;
+	background-color: black;
+}
+
+#footer_row2 .copyright_footer{
+	position: absolute;
+	height: 20px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: transparent;
+	left: 35%;
+	color: white;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.flex-container > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f1f1f1;
+  width: 285px;
+  margin: 10px;
+  height: 300px;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+.flex-container > div:hover {
+  background-color: #f1f1f1;
+  width: 285px;
+  margin: 10px;
+  height: 300px;
+  box-shadow: 5px 10px 8px #888888;
+  transform: translate(5px,-10px);
+}
+
+.flex-container > div > .img-container {
+	margin: 0px 0px 5px 0px;
+	background-color: white;
+	width: 100%;
+}
+
+.flex-container > div > div{
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	justify-content: space-between;
+}
+
+.tray-row1{
+	margin-left: 60px;
+	margin-top: 20px;
+	margin-right: 60px;
+	background-color: #f1f1f1;
+	flex-direction: row;
+	box-shadow: 5px 10px 8px #888888;
+}
+
+.tray-row1 > div> .btn{
+	align-self: center;
+}
+
+.tray-row1 > .tray-row1-subrow{
+	display: flex;
+	justify-content: space-around;
+	align-items: baseline;
+}
+
+.tray-row2{
+	margin-left: 60px;
+	margin-top: 20px;
+	margin-right: 60px;
+	background-color: #f1f1f1;
+	box-shadow: 5px 10px 8px #888888;
+	/*display: flex;*/
+	flex-wrap: wrap;
+	padding-bottom: 20px;
+	width: 90%;
+}
+
+.tray-row2 .table1 tr th{
+	text-align: left;
+	align-items: left;
+	margin-right: 5px;
+}
+
+div table tr td {
+	margin: 5px;
+	padding-top: 10px;
+	padding-right: 150px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	border-spacing: 5px solid red;
+	border-right: 20px;
+	border-bottom: 15px;
+}
+
+div table tr td:nth-child(4){
+	display: flex;
+	flex-direction: row;
+	padding-top: 20px;
+	margin-top: 23px;
+}
+
+div table tr td:nth-child(4) div {
+	display: inline-flex;
+	flex-direction: column;
+	padding: auto;
+}
+
+div table tr td:nth-child(4) div img{
+	width: 10px;
+	height: 10px;
+	padding-top: auto;
+	margin-left: 3px;
+	margin-top: 1px;
+	align-self: center;
+	padding-bottom: auto;
+}
+
+div table tr td:nth-child(4) div img:nth-child(1):hover{
+	transform: translateX(1px,0px);
+	transform: scale(2,2);
+	width: 10px;
+	height: 10px;
+	padding-top: auto;
+	margin-left: 3px;
+	margin-top: 1px;
+	align-self: center;
+	padding-bottom: auto;
+}
+
+div table tr td:nth-child(4) div img:nth-child(2):hover{
+	transform: translateX(1px,0px);
+	transform: scale(2,2);
+	width: 10px;
+	height: 10px;
+	padding-top: auto;
+	margin-left: 3px;
+	margin-top: 1px;
+	align-self: center;
+	padding-bottom: auto;
+}
+
+div.parent{
+	display: flex;
+	justify-content: space-around;
+}
+
+div.parent > div.checkout-column{
+	display: flex;
+	box-shadow: 5px 10px 8px #888888;
+	background-color: #f1f1f1;
+	flex-direction: column;
+	width: 47%;
+}
+
+div.parent > div.checkout-columnA:nth-child(1){
+	display: flex;
+	box-shadow: 5px 10px 8px #888888;
+	background-color: #f1f1f1;
+	flex-direction: column;
+	width: 47%;
+	overflow: hidden;
+	height: 340px;
+}
+
+div.parent > div.checkout-columnB:nth-child(1){
+	display: flex;
+	box-shadow: 5px 10px 8px #888888;
+	background-color: #f1f1f1;
+	flex-direction: column;
+	width: 47%;
+	overflow: hidden;
+	height: 600px;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child1{
+	display: flex;
+	justify-content: space-around;
+	flex-direction: row;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child1 > div{
+	padding-top: 10px;
+	justify-content: space-around;
+	flex-direction: row;
+	display: flex;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child1 > div > form {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child1 > div > form > input:nth-child(1){
+	width: 50%;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child2 > div{
+	display: flex;
+	padding-left: 18px;
+	align-content: flex-start;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child3{
+	display: flex;
+	align-content: flex-start;
+}
+
+div.parent > div.checkout-column > div.checkout-column-child3 > div {
+	display: flex;
+	align-content: flex-start;
+}
+
+
+div.parent > div.checkout-column > div.paymentB {
+	/*background-color: lime;*/
+	display: flex;
+	justify-content: space-around;
+} 
+
+
+

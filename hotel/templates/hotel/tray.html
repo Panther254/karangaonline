@@ -1,0 +1,45 @@
+{% extends 'hotel/base.html'%}
+{% load static %}
+
+{% block title%}
+
+	Tray
+
+{% endblock title%}
+
+
+{% block content%}
+
+<h1>YOUR ORDER</h1>
+
+<div class="tray-row1">
+	<div>
+		<a href="{% url 'hotel-home' %}">
+			<button class="btn btn-outline-danger">&#8592; Return to Counter</button>
+		</a>
+	</div>
+	<hr style="width: 100%;">
+	<dir class="tray-row1-subrow">
+		<span>Items in Tray: <strong> {{ order.get_tray_items }}</strong></span><span>Total: <strong>KES {{ order.get_tray_total|floatformat:2 }}</strong></span>
+		<a href="{% url 'hotel-checkout' %}">
+		<button class="btn btn-outline-info mb-4 mr-4">Payout &#8594;</button>
+		</a>
+	</dir>	
+</div>
+
+<div class="tray-row2 table-responsive table-borderless">
+	<table class="table1">
+		<tr> <th>Picture</th> <th>Item</th> <th>Price</th> <th>Quantity/Plates</th> <th>Total</th> </tr>
+
+		{% for item in items %}
+		<tr> <td><img style="width: 100px;height: 100px;box-shadow: 5px 10px 8px #888888;" src="{{ item.product.image.url }}"></td> <td>{{ item.product.name  }}</td> <td>KES {{ item.product.price|floatformat:2 }}</td> <td class="quantity-alter">{{ item.quantity }}
+				<div class="quantity">
+					<img data-food={{item.product.id}} data-action="Add" class="update-tray" src="{% static 'hotel/arrow-up.png' %}">
+					<img data-food={{item.product.id}} data-action="Remove" class="update-tray" src="{% static 'hotel/arrow-down.png' %}">
+				</div>
+		</td> <td>KES {{ item.get_total|floatformat:2 }}</td> </tr>
+		{% endfor %}
+		
+	</table>
+</div>
+{% endblock content%}

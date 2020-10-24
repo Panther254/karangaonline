@@ -1,0 +1,65 @@
+div.parent{
+	/*background-color: lime;*/
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+nav.bg-dark{
+    background-color: #4e598c !important;
+}
+
+nav .navbar-nav a.nav-link{
+  color: white !important;
+}
+
+nav .navbar-nav a.nav-link:hover{
+  color: red !important;
+}
+
+#hint_id_username{
+	color: white !important;
+}
+
+#user-details{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+p{
+	color: white;
+	margin-left: 15px;
+}
+
+label{
+	color: white;
+}
+
+hr{
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color: white;
+  height: 1px;
+}
+
+div.parent > div.profile-container{
+	background-color: #4e598c;
+	display: flex;
+	flex-direction: column;
+	width: 35%;
+	/*position: absolute;*/
+	/*overflow: hidden;*/
+	/*width: fit-content;
+	width: -webkit-fit-content;
+	height: -webkit-fit-content;
+	width: -moz-fit-content;
+	height: -moz-fit-content;*/
+}
+
+div.parent > div.profile-container > div.row > div.col{
+	display: flex;
+	flex-direction: column;
+}

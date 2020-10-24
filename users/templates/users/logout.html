@@ -1,0 +1,23 @@
+{% extends "users/base.html" %}
+{% load static %}
+
+{% block title %}
+	Logout
+{% endblock title %}
+
+
+
+
+{% block content %}
+	<div class="container register-container">
+            <div class="row">
+                <div class="col register-form-2">
+                    <h3>NOTICE</h3>
+                    <h4>You Have Been Logged Out!!!</h4>
+                 	<div class="form-group">
+						<a href="{% url 'login' %}" class="ForgetPwd" value="Login">Log In Again</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

@@ -1,0 +1,192 @@
+{% extends 'hotel/base.html'%}
+{% load static %}
+
+{% block title%}
+
+	Checkout
+
+{% endblock title%}
+
+
+{% block content%}
+
+<h1>CHECKOUT</h1>
+
+<div class="parent">
+	<div id="column1" class="checkout-column checkout-columnA">
+		<div class="checkout-column-child1">
+			<div>
+				<form id="User-info" onsubmit="preventDefault();">
+					{% csrf_token %}
+					{% if order.customer.user %}
+					  <div class="row ">
+					    <div class="col">
+					      <input type="text" value="{{ order.customer.first_name}} {{ order.customer.last_name}}" class="form-control" name="name" placeholder="Name...">
+					    </div>
+					    <div class="col">
+					      <input type="text" value="{{ order.customer.email }}" class="form-control" name="email" placeholder="Email Address">
+					    </div>
+					  </div>
+					{% else %}
+						<div class="row ">
+					    <div class="col">
+					      <input type="text" class="form-control" name="name" placeholder="Name...">
+					    </div>
+					    <div class="col">
+					      <input type="text" class="form-control" name="email" placeholder="Email Address">
+					    </div>
+					  </div>
+					{% endif %}  
+				</form>
+			</div>
+		</div>
+		<hr style=" width: 100%;">
+		<div class="checkout-column-child2">
+			<div>Delivery Information:</div>
+		</div>
+		<hr style=" width: 100%;">
+		<div class="checkout-column-child3">
+			<div>
+				<form id="Delivery-info" method="POST" onsubmit="preventDefault();">
+					{% csrf_token %}
+					{% if order.customer.user and delivery.address %}
+					  <div class="row">
+					    <div class="col-5 mb-2 mt-2 ml-2 mr-2">
+					      	<input required="True" type="text" value="{{ delivery.address }}"  class="form-control" name="address" placeholder="Address">
+					    </div>
+					    <div class="col-5 mb-2 mt-2 ml-2 mr-2">
+					      <input required="True" type="text" value="{{ delivery.city }}" class="form-control" name="city" placeholder="City">
+					    </div>
+					    <div class="col-5 mb-2 mt-2 ml-2 mr-2">
+					      <input required="True" type="text" value="{{ delivery.phone_number }}" class="form-control" name="phoneNumber" placeholder="Phone Number">
+					    </div>
+					  </div>
+					{% else %}
+						<div class="row">
+					    <div class="col-5 mb-2 mt-2 ml-2 mr-2">
+					      	<input required="True" type="text"  class="form-control" name="address" placeholder="Address">
+					    </div>
+					    <div class="col-5 mb-2 mt-2 ml-2 mr-2">
+					      <input required="True" type="text" class="form-control" name="city" placeholder="City">
+					    </div>
+					    <div class="col-5 mb-2 mt-2 ml-2 mr-2">
+					      <input required="True" type="text" class="form-control" name="phoneNumber" placeholder="Phone Number">
+					    </div>
+					  </div>
+					{% endif %}
+				</form>
+			</div>
+		</div>
+		<hr style=" width: 100%;">
+		<div class="row mb-4">
+				<div class="col mr-4 ml-4">
+					<button id='Confirm' class="btn btn-success btn-block">Confirm</button>
+				</div>
+		</div>
+		<hr style=" width: 100%;">
+		<div id="Payment-Info">
+			<button id="payout" class="btn btn-warning">Make Payment</button>
+		</div>
+	</div>
+	<div class="checkout-column">
+		<div class="row">
+			<div class="col ml-4 mt-2">
+				<a href="{% url 'hotel-home' %}">
+				<button class="btn btn-outline-danger">&#8592; Return to Counter</button>
+				</a>
+			</div>
+		</div>
+		<hr style="width: 100%;">
+		<div class="row">
+			<div class="col ml-4 mt-2"><p>Order Summary:</p></div>
+		</div>
+		<hr style="width: 100%;">
+		
+		{% for item in items  %}
+		<div class="row">
+			<div class="col"><img src="{{ item.product.image.url }}" alt="..." class="img-thumbnail"></div>
+			<div class="col mt-4"><p>{{ item.product.name }}</p></div>
+			<div class="col mt-4"><p>{{ item.product.price|floatformat:2 }}</p></div>
+			<div class="col mt-4"><p>x{{ item.quantity }}</p></div>
+		</div>
+		<hr style="width: 100%;">
+		{% endfor %}
+		
+		<div class="row">
+			<div class="col-12 ml-2"><p>ITEMS: <strong>{{ order.get_tray_items }}</strong></p></div>
+			<div class="col-12 ml-2"><p>TOTAL: <strong>KES {{ order.get_tray_total|floatformat:2 }}</strong></p></div>
+			
+		</div>
+	</div>
+	
+</div>
+
+<script type="text/javascript">
+	var confirmation = document.getElementById('Confirm');
+	confirmation.addEventListener('click', function(e){
+		var payment = document.getElementById('Payment-Info');
+		var colHeight = document.getElementById('column1');
+
+		colHeight.classList.remove('checkout-columnA');
+		colHeight.classList.add('checkout-columnB');
+		payment.classList.add('paymentB');
+		
+	});
+
+	var payment = document.getElementById('payout');
+
+	payment.addEventListener('click',function(){
+		payout();
+	});
+
+	function payout(){
+		var userFormData = new FormData(document.getElementById('User-info'));
+		var deliveryFormData = new FormData(document.getElementById('Delivery-info'));
+		
+		var userData = {
+			name: null,
+			email: null,
+		};
+
+		var deliveryData = {
+			address: null,
+			city: null,
+			phoneNumber: null,
+		};
+
+		userData.name = userFormData.get('name');
+		userData.email = userFormData.get('email');
+
+
+		deliveryData.address = deliveryFormData.get('address');
+		deliveryData.city = deliveryFormData.get('city');
+		deliveryData.phoneNumber = deliveryFormData.get('phoneNumber');
+
+		// alert(deliveryFormData.get('address'));
+
+
+		if (!deliveryData.address && !deliveryData.city && !deliveryData.phoneNumber) {
+			alert('The Delivery Information should be Inserted!!!!')
+
+		} else{
+
+			var url = '/process_order/';
+
+		fetch(url,{
+			method: 'POST',
+			headers: {
+				'Content-Type':'application/json',
+				'X-CSRFToken': csrftoken,
+			},
+			body: JSON.stringify({'userData':userData, 'deliveryData':deliveryData}),
+		})
+		.then(response => response.json())
+		.then(data =>{ 
+			alert(data)
+			window.location.href = "{% url 'hotel-home' %}"
+		}) 
+
+		}
+	}
+</script>
+{% endblock content%}

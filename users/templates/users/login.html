@@ -1,0 +1,51 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block title %}
+	
+{% endblock title %}
+
+
+
+
+{% block content %}
+	<div class="container login-container">
+            <div class="row">
+                <div class="col login-form-2">
+                    <h3>Login</h3>
+                    <form method="POST">
+                    	{% csrf_token %}
+                    	{% for hidden in form.hidden_fields %}
+						  {{ hidden }}
+						{% endfor %}
+
+                    	{% for field in form.visible_fields %}
+						    <div class="form-group">
+						        {% render_field field class="form-control" placeholder=field.label %}
+						        {% if field.errors %}
+						        	{{ field.errors }}
+						        	{% if field.help_text %}
+						        		<p class="help">{{ field.help_text|safe }}</p>
+						        	{% endif %}
+
+						        {% endif %}
+						        
+						    </div>
+						{% endfor %}
+                        <div class="form-group">
+                            <button type="submit" class="btnSubmit">Log In</button> 
+                        </div>
+                        
+                        <div class="form-group">
+							 Forgot Password? <a href="{% url 'password_reset' %}" class="ForgetPwd" value="Login">Click Here</a>
+                        </div>
+
+                        <div class="form-group">
+							 Need an Account? <a href="{% url 'register' %}" class="ForgetPwd" value="Login">Sign Up</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+{% endblock content %}

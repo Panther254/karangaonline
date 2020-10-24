@@ -1,0 +1,88 @@
+{% extends 'hotel/base.html'%}
+{% load static %}
+
+{% block title%}
+
+	Search
+
+{% endblock title%}
+
+{% block content%}
+
+
+	
+ 	<div class="box">
+ 		<img  src="{% static 'hotel/hotelpic.jpg' %}">
+			<div class="OverlayText">
+				<h1>
+					Having Friends Over But No Food in The Fridge? Worry No more
+				</h1>	
+				<h6 style="text-transform: capitalize; font-family: sans-serif;">
+					Karanga Food Deliveries Will Answer to Your Call. Having Friends Over Does not have to be A Hustle
+				</h6>
+			</div> 
+			
+ 	</div>
+
+
+
+ 	<h1 style="text-shadow: 20px 5px 8px #888888;">SEARCH RESULTS</h1>
+
+ 	<div class="flex-container">
+ 		{% for food in result_list %}
+ 			<div>
+ 				<div class="img-container"><img style="width: 100%;height: 150px;" src="{{ food.image.url }}"></div>
+ 				<hr>
+ 				<p style="margin-top: 5px;">{{food.name}}</p>
+ 				<div>Price: <span><strong>KES {{food.price|floatformat:2}}</strong></span></div>
+ 				<button  data-food={{ food.id }} data-action="Add" type="submit" class="btn btn-outline-primary btn-sm update-tray">Add to Tray</button>
+ 			</div>
+ 		{% endfor %}
+ 	</div>
+
+
+ 	<div class="flex-container">
+		<nav aria-label="Page navigation example mt-2">
+		  <ul class="pagination">
+		  	{% if result_list.has_previous %}
+		  		<li class="page-item">
+			      <a class="page-link" href="?page=1" aria-label="Previous">
+			        <span>First</span>
+			      </a>
+				</li>
+				<li class="page-item">
+			      <a class="page-link" href="?page={{ result_list.previous_page_number }}" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+				</li>
+		  	{% endif %}
+
+		   {% for num in result_list.paginator.page_range %}
+		   		{% if result_list.number == num %}
+		   			<li class="page-item active"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+		   		{% elif num > result_list.number|add:'-3' and num < result_list.number|add:'3' %}
+		   			<li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+		   		{% endif %}
+		   {% endfor %}
+
+
+		    {% if result_list.has_next %}
+			    <li class="page-item">
+			    	<a class="page-link" href="?page={{ result_list.next_page_number }}" aria-label="Next">
+			    		<span aria-hidden="true">&raquo;</span>
+			    		<span class="sr-only">Next</span>
+			    	</a>
+			    </li>
+			    <li class="page-item">
+			    	<a class="page-link" href="?page={{ result_list.paginator.num_pages }}" aria-label="Next">
+			    		<!-- <span aria-hidden="true">&raquo;</span> -->
+			    		<span>Last</span>
+			    	</a>
+			    </li>
+		    {% endif %}
+
+		  </ul>
+		</nav>
+	</div>
+
+{% endblock content %}
