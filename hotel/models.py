@@ -14,8 +14,8 @@ class Customer(models.Model):
 	def __str__(self):
 		return str(self.first_name)
 
-	def save(self):
-		super().save()
+	def save(self, *args, **kwargs):
+		super().save(*args, **kwargs)
 
 		img = Image.open(self.image.path)
 
@@ -42,8 +42,8 @@ class Food(models.Model):
 		plates_left = this.available_plates
 		return self.availability
 	
-	def save(self):
-		super().save()
+	def save(self, *args, **kwargs):
+		super().save(*args, **kwargs)
 
 		img = Image.open(self.image.path)
 
